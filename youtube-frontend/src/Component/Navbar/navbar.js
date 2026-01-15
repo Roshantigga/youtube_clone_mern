@@ -8,7 +8,7 @@ import AddIcon from "@mui/icons-material/Add";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-const Navbar = () => {
+const Navbar = ({setSideNavbarFunc,sideNavbar}) => {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
 
@@ -24,11 +24,15 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const sideNavbarFunc=()=>{
+    setSideNavbarFunc(!sideNavbar)
+  }
+
   return (
     <div className="navbar">
       {/* LEFT */}
       <div className="navbar-left">
-        <div className="navbarHamberger">
+        <div className="navbarHamberger" onClick={sideNavbarFunc}>
           <MenuIcon sx={{ color: "white" }} />
         </div>
 
